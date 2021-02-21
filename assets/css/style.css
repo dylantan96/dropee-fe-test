@@ -6,6 +6,10 @@
         border-color: transparent !important;
     }
 
+    #sidebar-menu-toggle.dropdown.open .dropdown-menu {
+        display: none;
+    }
+
     .mobile-only {
         display: none;
     }
