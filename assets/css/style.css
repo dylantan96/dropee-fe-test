@@ -150,7 +150,7 @@
 
   
 /* Admin Panel */
-@media (min-width: 990px) {
+@media (min-width: 990px) and (max-width: 1900px) {
     #admin-panel .sidebar-menu.active ~ .container {
         transition: all 0.5s ease;
         padding: 0 35px;
