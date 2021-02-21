@@ -17,7 +17,6 @@
     <!-- Custom -->
     <link href="assets/css/jpushmenu.css" rel="stylesheet">
     <link href="assets/css/base.css" rel="stylesheet">
-    <link href="assets/css/simple-sidebar.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -129,7 +128,33 @@
                                     <span></span>
                                 </div>
                                 Menu
+                                <i class="icon-angle-down mobile-only"></i>
                             </a>
+                            <div class="dropdown-menu">
+                                <ul class="links">
+                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="#">Sales</a></li>
+                                    <li>
+                                        <a href="#">Orders</a>
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item">New</a>
+                                            <a href="#" class="list-group-item">In Progress</a>
+                                            <a href="#" class="list-group-item">Completed</a>
+                                        </div>
+                                    </li>
+                                    <li><a href="#">Customers</a></li>
+                                    <li><a href="#">Products</a></li>
+                                    <li><a href="#">Promotion</a></li>
+                                    <li>
+                                        <a href="#">Store Settings</a>
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item">Store setting</a>
+                                            <a href="#" class="list-group-item">Payment</a>
+                                            <a href="#" class="list-group-item">Shipping</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown">
@@ -194,11 +219,6 @@
             <div class="bg-light border-right" id="sidebar-wrapper">
                 <div class="list-group list-group-flush">
                     <a href="#" class="list-group-item list-group-item-action">Dashboard</a>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">Item 1.1</a>
-                        <a href="#" class="list-group-item">Item 1.2</a>
-                        <a href="#" class="list-group-item">Item 1.3</a>
-                    </div>
                     <a href="#" class="list-group-item list-group-item-action">Sales</a>
                     <a href="#" class="list-group-item list-group-item-action">Orders</a>
                     <div class="list-group">
@@ -218,20 +238,6 @@
                 </div>
             </div>
         </div>
-        <!-- <section id="nav-wrapper">
-            <div class="container">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">Dashboard   </a></li>
-                    <li role="presentation"><a href="#sales" aria-controls="sales" role="tab" data-toggle="tab">Sales</a></li>
-                    <li role="presentation"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">Orders</a></li>
-                    <li role="presentation"><a href="#customers" aria-controls="customers" role="tab" data-toggle="tab">Customers</a></li>
-                    <li role="presentation"><a href="#products" aria-controls="products" role="tab" data-toggle="tab">Products</a></li>
-                    <li role="presentation"><a href="#promotion" aria-controls="promotion" role="tab" data-toggle="tab">Promotion</a></li>
-                    <li role="presentation"><a href="#store" aria-controls="store" role="tab" data-toggle="tab">Store Settings</a></li>
-                </ul>
-
-            </div>
-        </section> -->
         <div class="container">
             <div id="tab-data">
                 <div class="tab-content">
@@ -562,16 +568,32 @@
     //]]>
 </script>
 <script type="text/javascript">
+    // var screenWidth = 
+    // $(window).resize(function() {
+    //     $(window).width();
+    // });
+
     $('#sidebar-menu-toggle').on('click', function(e){
-        $(this).toggleClass('active');
-        $('.sidebar-menu').toggleClass('active');
-        $('#admin-panel').toggleClass('sidebar-active');
-        $('.sidebar-menu .list-group .list-group-item').removeClass('active');
-        
-        $('.sidebar-menu .list-group .list-group-item').on('click', function(e){
-            $('.sidebar-menu .list-group .list-group-item').removeClass('active');
+        var windowWidth = $(window).width();
+        if(windowWidth > 990) {
             $(this).toggleClass('active');
-        });
+            
+            $('.sidebar__hamburger-toggle').toggleClass('active');
+            $('.sidebar-menu').toggleClass('active');
+            $('#admin-panel').toggleClass('sidebar-active');
+            $('.sidebar-menu .list-group .list-group-item').removeClass('active');
+
+            $('.sidebar-menu .list-group .list-group-item').on('click', function(e){
+                $('.sidebar-menu .list-group .list-group-item').removeClass('active');
+                $(this).toggleClass('active');
+            });
+
+            setTimeout(() => {
+                $(this).removeClass('open');
+            }, 0);
+            
+        }
+       
     });
 
 </script>
